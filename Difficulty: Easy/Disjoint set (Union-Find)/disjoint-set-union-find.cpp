@@ -34,10 +34,11 @@ int main(){
 }
 // } Driver Code Ends
 
-
-// FIND UNION BY SIZE
-
+// FIND UNION BY RANK 
 //parent of each nodes stored in parent array and given as input
+//if rank equal -> make any one parent and uska rank do +1
+//else jiska rank jyada hoga wo PAPA banega 0_0
+
 int find(int parent[],int x)
 {
     if(x == parent[x])
@@ -46,10 +47,10 @@ int find(int parent[],int x)
     int top_parent = find(parent, parent[x]);
     
     //while comming back from recursion -> update the parent what we got from top
+    //path compression
     parent[x] = top_parent;
     
     return parent[x];
-    
 }
 
 //find the parent of x and y and if both are not in same set we can merge them
@@ -57,6 +58,24 @@ void unionSet(int parent[],int x,int y)
 {
 	int parent_x = find(parent, x);
 	int parent_y = find(parent, y);
+	
+	
+// 	if(parent_x == parent_y)
+// 	    return ;
+	    
+// 	if(rank[parent_x] > rank[y_parent])
+// 	{
+// 	    parent[parent_x] = parent_y;
+// 	}
+// 	else if(rank[parent_x] < rank[y_parent])
+// 	{
+// 	    parent[parent_y] = parent_x;
+// 	}
+// 	else //if equal
+// 	{
+// 	    parent[parent_x] = parent_y;
+// 	    rank[parent_y] ++;
+// 	}
 	
 	if(parent_x != parent_y)
 	{
